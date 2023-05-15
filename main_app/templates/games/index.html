@@ -3,14 +3,14 @@
 
 <h1>Game List</h1>
 
-{% for cat in cats %}
+{% for game in games %}
   <div class="card">
     <div class="card-content">
-      <span class="card-title">{{ cat.name }}</span>
-      <p>Breed: {{ cat.breed }}</p>
-      <p>Description: {{ cat.description }}</p>
-      {% if cat.age > 0 %}
-        <p>Age: {{ cat.age }}</p>
+      <span class="card-title">{{ game.name }}</span>
+      <p>Breed: {{ game.breed }}</p>
+      <p>Description: {{ game.description }}</p>
+      {% if game.age > 0 %}
+        <p>Age: {{ game.age }}</p>
       {% else %}
         <p>Age: Kitten</p>
       {% endif %}

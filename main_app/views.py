@@ -1,7 +1,7 @@
 from django.shortcuts import render
 
 #dummy data
-cats = [
+games = [
   {'name': 'Lolo', 'breed': 'tabby', 'description': 'furry little demon', 'age': 3},
   {'name': 'Sachi', 'breed': 'calico', 'description': 'gentle and loving', 'age': 2},
 ]
@@ -19,6 +19,5 @@ def about(request):
 
 def games_index(request):
     return render(request, 'games/index.html', {
-        'cats':cats
-        # 'games': games
+        'games': games
     })
