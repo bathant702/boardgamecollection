@@ -2,8 +2,9 @@ from django.shortcuts import render
 
 #dummy data
 games = [
-  {'name': 'Lolo', 'breed': 'tabby', 'description': 'furry little demon', 'age': 3},
-  {'name': 'Sachi', 'breed': 'calico', 'description': 'gentle and loving', 'age': 2},
+    {'name': 'Magic: The Gathering', 'genre': ' collectible card game', 'players': '2 to many', 'playtime': '20-60 min', 'description': 'family friendly fantasy card game '},
+    {'name': 'Monopoly', 'genre': 'board game', 'players': '2 to 4', 'playtime': '180 minutes', 'description': 'family friendly board game about economics'},
+    {'name': 'Catan', 'genre': 'board game', 'players': '2 to 6', 'playtime': '120 minutes', 'description': 'family friendly board game about bricks and sheep'},
 ]
 
 # Create your views here.
