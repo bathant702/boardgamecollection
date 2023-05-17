@@ -9,12 +9,10 @@
       <p>Number of Players: {{ game.players }}</p>
       <p>Playime: {{ game.playtime }}</p>
       <p>Description: {{ game.description }}</p>
-<!--      {% if game.age > 0 %}
-        <p>Age: {{ game.age }}</p>
-      {% else %}
-        <p>Age: Kitten</p>
-      {% endif %}
-    -->
+    </div>
+    <div class="card-action">
+        <a href="{% url 'games_update' game.id %}">Edit</a>
+        <a href="{% url 'games_delete' game.id %}">Delete</a>
     </div>
   </div>
 

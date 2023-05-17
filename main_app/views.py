@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Game
 
 #dummy data
@@ -8,9 +9,20 @@ from .models import Game
 #     {'name': 'Catan', 'genre': 'board game', 'players': '2 to 6', 'playtime': '120 minutes', 'description': 'family friendly board game about bricks and sheep'},
 # ]
 
-
 # Create your views here.
+# class based operations
+class GameCreate(CreateView):
+    model = Game
+    fields = [ 'name', 'genre', 'players', 'playtime', 'description' ]
+    success_url = '/games/{game_id}'
 
+class GameUpdate(UpdateView):
+    model = Game
+    fields = [ 'genre', 'players', 'playtime', 'description' ]
+
+class GameDelete(DeleteView):
+    model = Game
+    success_url = '/games'
 
 
 # function based operations
