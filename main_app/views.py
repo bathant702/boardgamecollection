@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from .models import Game
+from django.views.generic import ListView, DetailView
+from .models import Game, Location
 from .forms import RecordForm
 
 #dummy data
@@ -12,6 +13,7 @@ from .forms import RecordForm
 
 # Create your views here.
 # class based operations
+# game routes
 class GameCreate(CreateView):
     model = Game
     fields = [ 'name', 'genre', 'players', 'playtime', 'description' ]
@@ -24,6 +26,25 @@ class GameUpdate(UpdateView):
 class GameDelete(DeleteView):
     model = Game
     success_url = '/games'
+
+# location routes
+class LocationList(ListView):
+    model = Location
+
+class LocationDetail(DetailView):
+    model = Location
+
+class LocationCreate(CreateView):
+    model = Location
+    fields = [ 'name', 'address']
+
+class LocationUpdate(UpdateView):
+    model = Location
+    fields = [ 'address']
+
+class LocationDelete(DeleteView):
+    model = Location
+    success_url = '/locations'
 
 
 # function based operations
@@ -47,6 +68,7 @@ def games_detail(request, game_id):
         'record_form': record_form,
     })
 
+#add record
 def add_record(request, game_id):
     form = RecordForm(request.POST)
     if form.is_valid():

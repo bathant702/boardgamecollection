@@ -10,12 +10,23 @@ Result = (
     ('L', 'Loss')
 )
 
+class Location(models.Model):
+    name = models.CharField(max_length=50)
+    address = models.TextField(max_length= 200)
+
+    def __str__(self):
+        return self.name
+    
+    def get_absolute_url(self):
+        return reverse('locations_detail', kwargs={"pk": self.pk})
+    
 class Game(models.Model):
     name = models.CharField(max_length=100)
     genre = models.CharField(max_length=100)
     players = models.CharField(max_length=100)
     playtime = models.CharField(max_length=100)
     description = models.TextField(max_length=300)
+    location = models.ManyToManyField(Location)
 
     def __str__(self):
         return f'{self.name} ({self.id})'
@@ -34,10 +45,11 @@ class Record(models.Model):
         default = Result[0][0]
         )
     
-    game = models.ForeignKey(Game, on_delete=models.CASCADE) #this is so that when a game is deleted, it deletes related result too
+    game = models.ForeignKey(Game, on_delete=models.CASCADE)#this is so that when a game is deleted, it deletes related result too
 
     def __str__(self):
         return f"{self.get_result_display()} on {self.date}"
     
     class Meta:
         ordering = ['-date']
+
