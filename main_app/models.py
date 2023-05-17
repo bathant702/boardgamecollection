@@ -26,7 +26,7 @@ class Game(models.Model):
     players = models.CharField(max_length=100)
     playtime = models.CharField(max_length=100)
     description = models.TextField(max_length=300)
-    location = models.ManyToManyField(Location)
+    location = models.ManyToManyField(Location) #this is what we are calling in the shell
 
     def __str__(self):
         return f'{self.name} ({self.id})'
