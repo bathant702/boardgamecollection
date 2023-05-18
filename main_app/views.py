@@ -17,7 +17,6 @@ from .forms import RecordForm
 class GameCreate(CreateView):
     model = Game
     fields = [ 'name', 'genre', 'players', 'playtime', 'description' ]
-    success_url = '/games/{game_id}'
 
 class GameUpdate(UpdateView):
     model = Game
@@ -37,6 +36,7 @@ class LocationDetail(DetailView):
 class LocationCreate(CreateView):
     model = Location
     fields = [ 'name', 'address']
+    success_url = '/locations'
 
 class LocationUpdate(UpdateView):
     model = Location
@@ -60,12 +60,16 @@ def games_index(request):
         'games': games
     })
 
+#add game to collection
 def games_detail(request, game_id):
     game = Game.objects.get(id=game_id)
+    id_list = game.location.all().values_list('id')
+    locations_game_doesnt_have = Location.objects.exclude(id__in=id_list)
     record_form = RecordForm()
     return render(request, 'games/detail.html', {
         'game': game,
         'record_form': record_form,
+        'locations': locations_game_doesnt_have
     })
 
 #add record
