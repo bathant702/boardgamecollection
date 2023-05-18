@@ -24,12 +24,13 @@
         <input type="submit" class="btn" value="Add Record">
       </form>
       <br>
-        {% if game.played_recently %} <!-- figure out how to modify this for suggestions and patterns -->
+      <!-- figure out how to modify this for suggestions and patterns. possible removal if not efficient
+        {% if game.played_recently %}≈
         <div class="card-panel teal-text center-align">You must like playing {{game.name}}.</div>
         {% else %}
         <div class="card-panel red-text center-align">You haven't played {{game.name}} in awhile.</div>
-        {% endif %}
-    <table class="striped">
+        {% endif %}-->
+    <table class="striped blue">
       <thead>
         <tr>
           <th>Date</th>
@@ -51,13 +52,13 @@
 <hr>
 <div class="row">
   <div class="col s6">
-    <h4>{{ game.name }} has been played at:</h4>
+    <h4>{{ game.name }} was played at:</h4>
     {% if game.location.count %}
       {% for location in game.location.all %}
         <div class="card">
           <div class="card-content">
             <span class="card-title">
-              At <span style="color: {{ location.name }}"> {{ location.address }}</span>
+              <span> {{ location.name }}. The address is at {{ location.address }}</span> <!-- this has been played at?-->
             </span>
           </div>
         </div>
@@ -74,11 +75,11 @@
         <div class="card">
           <div class="card-content">
             <span class="card-title">
-              <span style="color: {{ location.color }}">{{ location.color }}</span> {{ location.name }}
+              <span>{{ location.name }}</span>
             </span>
           </div>
           <div class="card-action">
-            <form action="" method="POST">
+            <form action="{% url 'assoc_location' game.id location.id %}" method="POST">
               {% csrf_token %}
               <button type="submit" class="btn">Add</button>
             </form>

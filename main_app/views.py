@@ -80,3 +80,9 @@ def add_record(request, game_id):
         new_record.game_id = game_id
         new_record.save()
     return redirect('detail', game_id = game_id)
+
+#for associated locations
+def assoc_location(request, game_id, location_id):
+  # Note that you can pass a location's id instead of the whole location object
+  Game.objects.get(id=game_id).location.add(location_id)
+  return redirect('detail', game_id=game_id)
