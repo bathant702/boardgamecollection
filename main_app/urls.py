@@ -10,6 +10,7 @@ urlpatterns = [
     path('games/create/', views.GameCreate.as_view(), name='games_create'), #create path for game
     path('games/<int:pk>/update/', views.GameUpdate.as_view(), name='games_update'), #upate path for game
     path('games/<int:pk>/delete/', views.GameDelete.as_view(), name='games_delete'), #delete path for game
+    #add record
     path('games/<int:game_id>/add_record/', views.add_record, name='add_record'), #create path for record
     #location paths
     path('locations/', views.LocationList.as_view(), name='locations_index'),
