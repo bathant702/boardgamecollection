@@ -60,6 +60,12 @@
             <span class="card-title">
               <span> {{ location.name }}. The address is at {{ location.address }}</span> <!-- this has been played at?-->
             </span>
+            <div class="card-action">
+              <form action="{% url 'unassoc_location' game.id location.id %}" method="POST">
+                {% csrf_token %}
+                <button type="submit" class="btn">Remove</button>
+              </form>
+            </div>
           </div>
         </div>
       {% endfor %}

@@ -1,6 +1,7 @@
 from django.db import models
 from django.urls import reverse
 from datetime import date
+from django.contrib.auth.models import User
 
 # Create your models here.
 
@@ -36,6 +37,8 @@ class Game(models.Model):
     
     def played_recently(self):
         return self.record_set.filter(date=date.today()).count() >= len(Result)
+    
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
 
 class Record(models.Model):
     date = models.DateField('Date Played')
