@@ -86,3 +86,9 @@ def assoc_location(request, game_id, location_id):
   # Note that you can pass a location's id instead of the whole location object
   Game.objects.get(id=game_id).location.add(location_id)
   return redirect('detail', game_id=game_id)
+
+#for associated locations
+def unassoc_location(request, game_id, location_id):
+  # Note that you can pass a location's id instead of the whole location object
+  Game.objects.get(id=game_id).location.remove(location_id)
+  return redirect('detail', game_id=game_id)

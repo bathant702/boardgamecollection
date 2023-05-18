@@ -19,5 +19,6 @@ urlpatterns = [
     path('locations/<int:pk>/update/', views.LocationUpdate.as_view(), name='locations_update'),
     path('locations/<int:pk>/delete/', views.LocationDelete.as_view(), name='locations_delete'),
     path('games/<int:game_id>/assoc_location/<int:location_id>/', views.assoc_location, name='assoc_location'), #relating to associated location
+    path('games/<int:game_id>/unassoc_location/<int:location_id>/', views.unassoc_location, name='unassoc_location'), #relating to associated location
 
 ]
