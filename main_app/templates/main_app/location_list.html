@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<h1>Toy List</h1>
+<h1>Location List</h1>
 
 {% for location in location_list %}
   <a href="{% url 'locations_detail' location.id %}">
@@ -12,6 +12,6 @@
         </div>
     </div>
   </a>
-{% endfor %}
 
+{% endfor %}
 {% endblock %}
